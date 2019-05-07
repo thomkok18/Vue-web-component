@@ -7,6 +7,6 @@
 
 <script>
     export default {
-        props: ['name'] test2
+        props: ['name']
     }
 </script>
