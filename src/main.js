@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import wrap from '@vue/web-component-wrapper';
-import VueWebComponent from './components/VueWebComponent';
+import ButtonComponent from './components/Button';
 
-const CustomElement = wrap(Vue, VueWebComponent);
-window.customElements.define('vue-web-component', CustomElement);
+const ButtonElement = wrap(Vue, ButtonComponent);
+window.customElements.define('button-component', ButtonElement);
+
 Vue.config.productionTip = false;
-
 new Vue({
   render: h => h(App),
 });
