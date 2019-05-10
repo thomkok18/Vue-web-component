@@ -7,18 +7,19 @@
         props: {
             text: {
                 type: String,
-                required: true
+                default: ''
             },
             color: {
                 type: String,
                 validator: function (value) {
                     return [
+                        'grey',
                         'blue',
                         'green',
                         'red',
                     ].indexOf(value) !== -1
                 },
-                default: 'xs'
+                default: 'grey'
             },
             size: {
                 type: String,
@@ -31,7 +32,7 @@
                         'xl',
                     ].indexOf(value) !== -1
                 },
-                default: ''
+                default: 'xs'
             },
             radius: {
                 type: String,
@@ -59,6 +60,20 @@
 
     button:focus {
         outline: 0;
+    }
+
+    /* Grey button */
+    .grey {
+        background-color: #DDDDDD;
+        color: black;
+    }
+
+    .grey:hover {
+        background-color: #E5E5E5;
+    }
+
+    .grey:active {
+        background-color: #CCCCCC;
     }
 
     /* Blue button */
