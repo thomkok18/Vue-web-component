@@ -56,6 +56,11 @@
         border: none;
         cursor: pointer;
         font-weight: bold;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     button:focus {
