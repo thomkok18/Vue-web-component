@@ -33,21 +33,6 @@
                 operatorClicked: false
             }
         },
-        props: {
-            value1: {
-                type: Number,
-            },
-            value2: {
-                type: Number,
-            },
-            test: {
-                type: String,
-            },
-            anwser: {
-                type: Number,
-                value: ''
-            }
-        },
         methods: {
             clear() {
                 this.current = '';
