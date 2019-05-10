@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>My Webcomponent</title>
 </head>
+<style>
+    .display {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+</style>
 <body>
 <!--Use your custom element-->
 
-<button-component text="test" size="lg" color="red" radius="round"></button-component>
+<div class="display">
+    <button-component text="test" size="xs" color="blue" radius="round"></button-component>
 
-<calculator-component></calculator-component>
+    <calculator-component></calculator-component>
+</div>
 </body>
 </html>

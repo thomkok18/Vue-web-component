@@ -1,6 +1,6 @@
 <template>
     <div class='calculator'>
-        <div class="display">{{current || 0}}</div>
+        <div class="display">{{error ? error : current || 0}}</div>
         <div @click="clear" class="btn">C</div>
         <div @click="sign" class="btn">+/-</div>
         <div @click="percent" class="btn">%</div>
@@ -30,16 +30,24 @@
                 previous: null,
                 current: '',
                 operator: null,
-                operatorClicked: false
+                operatorClicked: false,
+                error: null
             }
         },
         methods: {
             clear() {
                 this.current = '';
+                this.operator = null;
+                this.error = null;
             },
             sign() {
-                this.current = this.current.charAt(0) === '-' ?
-                    this.current.slice(1) : `${this.current}`;
+                if (this.current.charAt(0) === '-') {
+                    this.current = this.current.slice(1);
+                } else if (this.current.charAt(0) !== '-') {
+                    this.current = '-' + this.current
+                } else {
+                    `${this.current}`;
+                }
             },
             percent() {
                 this.current = `${parseFloat(this.current) / 100}`
@@ -53,7 +61,7 @@
             },
             comma() {
                 if (this.current.indexOf(',') === -1) {
-                    this.append(',')
+                    this.append('.')
                 }
             },
             setPrevious() {
@@ -77,20 +85,41 @@
                 this.setPrevious();
             },
             equal() {
-                this.current = `${this.operator(parseFloat(this.current), parseFloat(this.previous))}`;
+                if (this.previous !== '' || this.current !== '') {
+                    if (this.operator) {
+                        this.current = `${this.operator(parseFloat(this.current), parseFloat(this.previous))}`;
+                        this.previous = '';
+
+                        if (this.current === 'NaN') {
+                            this.current = '';
+                            this.previous = '0';
+                        } else {
+                            this.error = null;
+                        }
+                    }
+                } else {
+                    this.current = '';
+                    this.previous = '';
+                    this.error = 'Syntax error';
+                }
             }
         }
     }
 </script>
 
 <style scoped>
+    div {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
     .calculator {
         text-align: center;
-        margin: 0 auto;
         font-size: 40px;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: minmax(50px, auto);
         width: 400px;
     }
 
@@ -110,8 +139,24 @@
         cursor: pointer;
     }
 
+    .btn:hover {
+        background-color: #FFFFFF;
+    }
+
+    .btn:active {
+        background-color: #DBDBDB;
+    }
+
     .operator {
-        background-color: orange;
+        background-color: #FF8C00;
         color: white;
+    }
+
+    .operator:hover {
+        background-color: orange;
+    }
+
+    .operator:active {
+        background-color: #E28F00;
     }
 </style>
