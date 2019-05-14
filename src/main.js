@@ -11,6 +11,7 @@ const CalculatorElement = wrap(Vue, CalculatorComponent);
 window.customElements.define('calculator-component', CalculatorElement);
 
 Vue.config.productionTip = false;
+Vue.config.devtools = false;
 new Vue({
-  render: h => h(App),
+    render: h => h(App),
 });

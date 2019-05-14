@@ -6,15 +6,15 @@ Open your terminal and go to the root of your project. Add this command in your 
 ```
 npm i @thomkok22/vue-web-component-project
 ```
-Put the scripts inside the ```<head>```
+Make a html page and add these scripts inside the ```<head>```
 ```
 <script src="https://unpkg.com/vue"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-loader.js"></script>
-<script src="./node_modules/testing-vue-web-components/dist/vue-web-component.js"></script>
+<script src="./node_modules/vue-web-component-project/dist/web-components.js"></script>
 ```
 
 ## Usage
-To use the button and calculator. Just add them in an html template.
+To use the button and the calculator. Just add them in an html template.
 ```
     <button-component></button-component>
     
