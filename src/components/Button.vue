@@ -1,14 +1,10 @@
 <template>
-    <button :class="[color, size, radius]">{{text}}</button>
+    <button part="button" :class="[color, size, radius]"><slot></slot></button>
 </template>
 
 <script>
     export default {
         props: {
-            text: {
-                type: String,
-                default: ''
-            },
             color: {
                 type: String,
                 validator: function (value) {
