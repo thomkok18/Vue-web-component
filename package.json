@@ -1,6 +1,6 @@
 {
   "name": "vue-web-component-project",
-  "version": "1.0.5",
+  "version": "1.0.14",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
