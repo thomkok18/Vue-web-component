@@ -1,9 +1,9 @@
 <template>
     <div class='calculator'>
-        <div class="display">{{error ? error : current || 0}}</div>
+        <div class="display">{{current || 0}}</div>
         <div @click="clear" class="btn">C</div>
         <div @click="sign" class="btn">+/-</div>
-        <div @click="percent" class="btn">%</div>
+        <div @click="del" class="btn">Del</div>
         <div @click="divide" class="btn operator">÷</div>
         <div @click="append('7')" class="btn">7</div>
         <div @click="append('8')" class="btn">8</div>
@@ -27,18 +27,12 @@
     export default {
         data() {
             return {
-                previous: null,
                 current: '',
-                operator: null,
-                operatorClicked: false,
-                error: null
             }
         },
         methods: {
             clear() {
                 this.current = '';
-                this.operator = null;
-                this.error = null;
             },
             sign() {
                 if (this.current.charAt(0) === '-') {
@@ -49,59 +43,51 @@
                     `${this.current}`;
                 }
             },
-            percent() {
-                this.current = `${parseFloat(this.current) / 100}`
+            del() {
+                this.current = this.current.slice(0, -1);
             },
             append(number) {
-                if (this.operatorClicked) {
-                    this.current = '';
-                    this.operatorClicked = false;
-                }
-                this.current = `${this.current}${number}`;
+                this.current = this.current + number;
             },
             comma() {
-                if (this.current.indexOf(',') === -1) {
-                    this.append('.')
+                let lastValue = this.current.charAt(this.current.length - 1);
+
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('.') === -1) {
+                    this.current = this.current + '.';
+                } else if (lastValue === '') {
+                    this.current = 0 + '.';
                 }
-            },
-            setPrevious() {
-                this.previous = this.current;
-                this.operatorClicked = true;
             },
             divide() {
-                this.operator = (a, b) => a / b;
-                this.setPrevious();
+                const lastValue = this.current.charAt(this.current.length - 1);
+
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('/') === -1) {
+                    this.current = this.current + '/';
+                }
             },
             times() {
-                this.operator = (a, b) => a * b;
-                this.setPrevious();
+                const lastValue = this.current.charAt(this.current.length - 1);
+
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('*') === -1) {
+                    this.current = this.current + '*';
+                }
             },
             minus() {
-                this.operator = (a, b) => a - b;
-                this.setPrevious();
+                const lastValue = this.current.charAt(this.current.length - 1);
+
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('-') === -1) {
+                    this.current = this.current + '-';
+                }
             },
             add() {
-                this.operator = (a, b) => a + b;
-                this.setPrevious();
+                const lastValue = this.current.charAt(this.current.length - 1);
+
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('+') === -1) {
+                    this.current = this.current + '+';
+                }
             },
             equal() {
-                if (this.previous !== '' || this.current !== '') {
-                    if (this.operator) {
-                        this.current = `${this.operator(parseFloat(this.current), parseFloat(this.previous))}`;
-                        this.previous = '';
-
-                        if (this.current === 'NaN') {
-                            this.current = '';
-                            this.previous = '0';
-                        } else {
-                            this.error = null;
-                        }
-                    }
-                } else {
-                    this.current = '';
-                    this.previous = '';
-                    this.error = 'Syntax error';
-                }
+                this.current = eval(this.current).toString();
             }
         }
     }
