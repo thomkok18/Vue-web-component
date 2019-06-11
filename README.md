@@ -16,9 +16,9 @@ Make a html page and add these scripts inside the ```<head>```
 ## Usage
 To use the button and the calculator. Just add them in an html template.
 ```
-<component-button></component-button>
+<component-calculator></component-calculator>
 
-<calculator-component></calculator-component>
+<component-button></component-button>
 ```
 
 ### Button configuration
