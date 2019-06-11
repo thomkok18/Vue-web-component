@@ -52,7 +52,7 @@
             comma() {
                 let lastValue = this.current.charAt(this.current.length - 1);
 
-                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('.') === -1) {
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue)) {
                     this.current = this.current + '.';
                 } else if (lastValue === '') {
                     this.current = 0 + '.';
@@ -61,28 +61,28 @@
             divide() {
                 const lastValue = this.current.charAt(this.current.length - 1);
 
-                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('/') === -1) {
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue)) {
                     this.current = this.current + '/';
                 }
             },
             times() {
                 const lastValue = this.current.charAt(this.current.length - 1);
 
-                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('*') === -1) {
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue)) {
                     this.current = this.current + '*';
                 }
             },
             minus() {
                 const lastValue = this.current.charAt(this.current.length - 1);
 
-                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('-') === -1) {
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue)) {
                     this.current = this.current + '-';
                 }
             },
             add() {
                 const lastValue = this.current.charAt(this.current.length - 1);
 
-                if (!['', '.', '+', '-', '/', '*'].includes(lastValue) && this.current.indexOf('+') === -1) {
+                if (!['', '.', '+', '-', '/', '*'].includes(lastValue)) {
                     this.current = this.current + '+';
                 }
             },
