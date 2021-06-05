@@ -12,16 +12,16 @@
   ],
   "dependencies": {
     "@vue/web-component-wrapper": "latest",
-    "vue": "^2.6.10"
+    "vue": "^2.6.13"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.2",
-    "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^4.4.1",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
     "babel-eslint": "^10.1.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "vue-template-compiler": "^2.6.10"
+    "eslint": "^7.28.0",
+    "eslint-plugin-vue": "^7.10.0",
+    "vue-template-compiler": "^2.6.13"
   },
   "eslintConfig": {
     "root": true,
@@ -47,7 +47,7 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "description": "## Project setup ``` yarn install ```",
+  "description": "## Project setup ``` npm install ```",
   "main": "babel.config.js",
   "repository": {
     "type": "git",
